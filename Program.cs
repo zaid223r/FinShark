@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 using api.Data;
+using api.Interfaces;
+using api.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 });
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IStockRepository,StockRepository>();
 
 var app = builder.Build();
 
