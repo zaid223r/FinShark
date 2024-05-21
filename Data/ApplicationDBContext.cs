@@ -7,15 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Data
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : DbContext //Inherit from DbContext
     {
-        public ApplicationDBContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public ApplicationDBContext(DbContextOptions dbContextOptions) : base(dbContextOptions) 
         {
-            
+            //Inherit all options
         }
 
-        public DbSet<Stock> Stock { get; set;}
-        public DbSet<Comment> Comments { get; set;}
+        public DbSet<Stock> Stock { get; set;} //make Stock table
+        public DbSet<Comment> Comments { get; set;} //make Comments table
 
     }
 }
