@@ -6,6 +6,7 @@ using api.Data;
 using api.Mappers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using api.Dtos;
 using api.Dtos.Stock;
 using Microsoft.EntityFrameworkCore;
 using api.Interfaces;
