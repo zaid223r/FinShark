@@ -6,7 +6,6 @@ using api.Data;
 using api.Mappers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using api.Dtos;
 using api.Dtos.Stock;
 using Microsoft.EntityFrameworkCore;
 using api.Interfaces;
@@ -17,11 +16,9 @@ namespace api.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
         private readonly IStockRepository _stockRepo;
-        public StockController(ApplicationDBContext context, IStockRepository stockRepo)
+        public StockController(IStockRepository stockRepo)
         {
-            _context = context;
             _stockRepo = stockRepo;
         }
 
