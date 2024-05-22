@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Mappers;
-using api.Repository;
 using Microsoft.AspNetCore.Mvc;
+using api.Interfaces;
 
 namespace api.Controllers
 {
@@ -13,8 +13,8 @@ namespace api.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly CommentRepository _commentRepo;
-        public CommentController(CommentRepository commentRepo)
+        private readonly ICommentRepository _commentRepo;
+        public CommentController(ICommentRepository commentRepo)
         {
             _commentRepo = commentRepo;            
         }
@@ -25,6 +25,19 @@ namespace api.Controllers
             var commentModel = await _commentRepo.GetAllAsync();
             var comments = commentModel.Select(s => s.ToCommentDto());
             return Ok(comments);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var comment = await _commentRepo.GetByIdAsync(id);
+
+            if(comment == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(comment.ToCommentDto());
         }
 
     }

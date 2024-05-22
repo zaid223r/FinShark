@@ -42,7 +42,7 @@ namespace api.Controllers
                 return NotFound();
             }
             
-            return Ok(stock);
+            return Ok(stock.ToStockDto());
         }
 
         [HttpPost]
