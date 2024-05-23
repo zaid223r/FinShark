@@ -61,7 +61,7 @@ namespace api.Repository
 
             commentModel.Title = updateCommentRequestDto.Title;
             commentModel.Content = updateCommentRequestDto.Content;
-            commentModel.StockId = updateCommentRequestDto.StockId;
+            // commentModel.StockId = updateCommentRequestDto.StockId;
 
             await _context.SaveChangesAsync();
 
