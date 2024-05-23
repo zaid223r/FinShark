@@ -24,6 +24,7 @@ namespace api.Repository
         {
             await _context.Stock.AddAsync(stock);
             await _context.SaveChangesAsync();
+            
             return stock;
         }
 

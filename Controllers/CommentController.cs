@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using api.Interfaces;
+using api.Models;
+using api.Dtos.Comment;
 
 namespace api.Controllers
 {
@@ -38,6 +40,15 @@ namespace api.Controllers
             }
             
             return Ok(comment.ToCommentDto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateCommentRequestDto commentDto)
+        {
+            var commentModel = commentDto.ToCommentFromCreateDto();
+            await _commentRepo.CreateAsync(commentModel);
+
+            return CreatedAtAction(nameof(GetById), new {id = commentModel.Id}, commentModel.ToCommentDto());
         }
 
     }
