@@ -7,6 +7,7 @@ using api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using api.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +61,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<ICommentRepository,CommentRepository>();
 builder.Services.AddScoped<IStockRepository,StockRepository>();
+
+builder.Services.AddScoped<ITokenService,TokenService>();
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     {
